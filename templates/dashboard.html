@@ -1,0 +1,215 @@
+{% extends "main.html" %}
+{% block content %}
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap">
+    </head>
+    
+    <!-- Preloader -->
+    <div id="preloader" style="display: none;">
+      <div data-loader="dual-ring"></div>
+    </div>
+    <!-- Preloader End --> 
+    
+    <!-- Document Wrapper   
+    ============================================= -->
+    <div id="main-wrapper"> 
+      <!-- Header
+      ============================================= -->
+      <header id="header">
+        <div class="container">
+          <div class="header-row">
+            <div class="header-column justify-content-start"> 
+              <!-- Logo
+              ============================= -->
+              <!-- Logo end --> 
+              <!-- Collapse Button
+              ============================== -->
+              <!-- Collapse Button end --> 
+              
+              <!-- Primary Navigation
+              ============================== -->
+              <nav class="primary-menu navbar navbar-expand-lg">
+                <div id="header-nav" class="collapse navbar-collapse">
+                 
+                </div>
+              </nav>
+              <!-- Primary Navigation end --> 
+            </div>
+            <div class="header-column justify-content-end"> 
+              <!-- My Profile
+              ============================== -->
+              <nav class="login-signup navbar navbar-expand">
+                
+              </nav>
+              <!-- My Profile end --> 
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Header End -->
+      
+      <!-- Content
+      ============================================= -->
+      <div id="content" class="py-4">
+        <div class="container">
+          <div class="row"> 
+            <!-- Left Panel
+            ============================================= -->
+            <aside class="col-lg-3"> 
+              
+              <!-- Profile Details
+              =============================== -->
+              <div class="bg-white shadow-sm rounded text-center p-5 mb-4">
+                <!-- <div class="profile-thumb mt-3 mb-4"> <img class="rounded-circle" src="/static/images/profile-thumb.jpg" alt="">
+                  
+                </div> -->
+                <p class=" fw-500 mb-2 text-6">Hello, <bold class="text-7">{{ data.account.first_name|upper }} {{ data.account.last_name|upper }} </bold></p>
+                <p class=" fw-500 mb-2">ACCOUNT # <bold class="text-7">{{ data.account.account_number|upper }}</bold></p>
+                <!-- <p class="mb-2"><a href="" class=" text-light" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit Profile" aria-label="Edit Profile"><i class="fas fa-edit text-8"></i></a></p> -->
+              </div>
+              <!-- Profile Details End --> 
+              
+              <!-- Available Balance
+              =============================== -->
+              <div class="bg-white shadow-sm rounded text-center p-5 mb-4">
+                <div class="7 text-light my-3"><i class="fas fa-wallet text-20 text-light"></i></div>
+                <h3 class="text-15 fw-400">${{ data.account.account_balance }}</h3>
+                <p class="mb-2 text-muted opacity-8">Available Balance</p>
+                <hr class="mx-n3">
+                <div class="d-flex"><a href="/withdraw" class="btn-link me-auto">Withdraw</a> <a href="/send-money" class="btn-link ms-auto">Send Money</a></div>
+              </div>
+              <!-- Available Balance End --> 
+              
+              <!-- Need Help?
+              =============================== -->
+              <div class="bg-white shadow-sm rounded text-center p-5 mb-4">
+                <div class="7 text-light my-3"><i class="fas fa-comments text-22"></i></div>
+                <h3 class=" fw-400 my-4">Need Help?</h3>
+                <p class="text-muted opacity-8 mb-4">Have questions or concerns regrading your account?<br>
+                  Our experts are here to help!.</p>
+                <div class="d-grid"><a href="/contact" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
+              </div>
+              <!-- Need Help? End --> 
+              
+            </aside>
+            <!-- Left Panel End -->
+            
+            <!-- Middle Panel
+            ============================================= -->
+            <div class="col-lg-9"> 
+              
+              <!-- Profile Completeness
+              =============================== -->
+              <div class="bg-white shadow-sm rounded p-4 mb-4 d-none d-md-block">
+                <h3 class=" fw-400 d-flex align-items-center mb-4">Profile Completeness<span class="border text-success rounded-pill fw-500  px-3 py-1 ms-2">75%</span></h3>
+                <hr class="mb-4 mx-n4">
+                <div class="row gy-4 profile-completeness">
+                  <div class="col-sm-6 col-md-3">
+                    <div class="border rounded text-center px-4 py-5"> <span class="d-block text-light mt-2 mb-3"><i class="fas fa-mobile-alt text-15"></i></span> <span class=" d-block text-success mt-4 mb-3"><i class="fas fa-check-circle"></i></span>
+                      <p class="mb-0">ID Verified</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="border rounded text-center px-4 py-5"> <span class="d-block text-light mt-2 mb-3"><i class="fas fa-envelope text-15"></i></span> <span class=" d-block text-success mt-4 mb-3"><i class="fas fa-check-circle"></i></span>
+                      <p class="mb-0">Email Verified</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="position-relative border rounded text-center px-4 py-5"> <span class="d-block text-light mt-2 mb-3"><i class="fas fa-university text-15"></i></span> <span class=" d-block text-success mt-4 mb-3"><i class="fa fa-check-circle "></i></span>
+                      <p class="mb-0">Account Verified</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="position-relative border rounded text-center px-4 py-5"> <span class="d-block text-light mt-2 mb-3"><i class="fas fa-credit-card text-15"></i></span> <span class=" d-block text-light mt-4 mb-3"><i class="far fa-circle "></i></span>
+                      <p class="mb-0"><a class="btn-link stretched-link " style="color: black !important;" href="">Add Credit Card</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Profile Completeness End --> 
+              
+              <!-- Recent Activity
+              =============================== -->
+              <div class="bg-white shadow-sm rounded py-4 mb-4">
+                <h3 class=" fw-400 d-flex align-items-center px-4 mb-4">Transaction History</h3>
+                
+                <!-- Title
+                =============================== -->
+                <div class="transaction-title py-2 px-4">
+                  <div class="row fw-00">
+                    <div class="col-2 col-sm-1 text-center"><span class="">Date</span></div>
+                    <div class="col col-sm-7">Description</div>
+                    <div class="col-auto col-sm-2 d-none d-sm-block text-center">Narration</div>
+                    <div class="col-3 col-sm-2 text-end">Amount</div>
+                  </div>
+                </div>
+                <!-- Title End --> 
+                
+                <!-- Transaction List
+                =============================== -->
+                <div class="transaction-list">
+                  {% for transaction in data.transactions[:5] %}
+                    <div class="transaction-item px-5 py-4" data-bs-toggle="modal" data-bs-target="#transaction-detail">
+                      <div class="row align-items-center flex-row">
+                        <div class="col-4 col-sm-1 text-left"> <span class="d-block text-3 text-left fw-300">{{ transaction.transaction_time.strftime("%m/%d/%Y, %H:%M")|datetime }}</span> </div>
+                        <div class="col col-sm-7"> <span class="d-block ">FinBank</span> {% if data.user_id == transaction.sender_id %} <span class="text-muted">Transfer to {{ transaction.receiver_name }}</span> {% else %} <span class="text-muted">Received from {{ transaction.sender_name }}</span> {% endif %}</div>
+                        <!-- <div class="col-auto col-sm-2 d-none d-sm-block text-center "> <span class="text-success" data-bs-toggle="tooltip" title="" data-bs-original-title="Completed" aria-label="Completed"><i class="fas fa-check-circle"></i></span> </div> -->
+                        <div class="col-auto col-sm-2 d-none d-sm-block text-center "> {{ transaction.narration }} </div>
+                        <div class="col-3 col-sm-2 text-end ">{% if data.user_id == transaction.sender_id %} <span class="text-nowrap" style="color: red;">- ${{ transaction.amount }}</span> {% else %}  <span class="text-nowrap" style="color: green;">${{ transaction.amount }}</span> {% endif %}</div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                 
+                </div>
+                <!-- Transaction List End --> 
+                
+                <!-- Transaction Item Details Modal
+                =========================================== -->
+                <!-- Transaction Item Details Modal End --> 
+                
+                <!-- View all Link
+                =============================== -->
+                {% if data.transactions|count > 5 %}
+                <div class="text-center mt-4"><a href="/transactions" class="btn-link">View all<i class="fas fa-chevron-right  ms-2"></i></a></div>
+                {% endif %}
+                <!-- View all Link End --> 
+                
+              </div>
+              <!-- Recent Activity End --> 
+            </div>
+            <!-- Middle Panel End --> 
+          </div>
+        </div>
+      </div>
+      <!-- Content end --> 
+      
+    </div>
+    <!-- Document Wrapper end --> 
+
+    <!-- Styles Switcher -->
+    <div id="styles-switcher" class="left">
+      <h2 class="text-6 mb-3">Settings</h2>
+      <hr>
+      <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/profile">Personal information</a> </button>
+      <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-password">Change Password</a> </button>
+      <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/logout">Logout</a> </button>
+      <button class="btn switcher-toggle"><i class="fas fa-cog text-8"></i></button>
+    </div>
+    <!-- Styles Switcher End --> 
+    
+    <!-- Back to Top
+    ============================================= --> 
+    <a id="back-to-top" data-bs-toggle="tooltip" title="" href="javascript:void(0)" data-bs-original-title="Back to Top" aria-label="Back to Top" style="display: none;"><i class="fa fa-chevron-up"></i></a> 
+    
+    <!-- Script --> 
+    <script src="/static/js/jquery/jquery.min.js"></script> 
+    <script src="/static/js/bootstrap/js/bootstrap.bundle.min.js"></script> 
+    <!-- Style Switcher --> 
+    <script src="/static/js/switcher.min.js"></script> 
+    <script src="/static/js/theme.js"></script>
+    
+    </body></html>
+
+    {% endblock %}

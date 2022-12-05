@@ -1,0 +1,44 @@
+.send-form-control {
+    border: none;
+    border-bottom: solid 1px #e8e8e8;
+    width: 100%;
+    color: black;
+}
+
+.account-form-control {
+    border: none;
+    border-bottom: solid 1px #e8e8e8;
+    width: 100%;
+    color: black;
+}
+
+.send-form-control::placeholder {
+    color: #7A7A7A;
+}
+
+.account-form-control::placeholder {
+    color: #7A7A7A;
+}
+
+.send-form-group {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-form-group {
+    margin: 25px 0;
+}
+
+.proceed-btn {
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .last {
+        width: 50%;
+    }
+}

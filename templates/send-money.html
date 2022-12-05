@@ -1,0 +1,151 @@
+{% extends "main.html" %}
+{% block content %}
+
+<html lang="en"><head>
+    
+    <!-- Web Fonts
+    ============================================= -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap">
+    
+    <!-- Stylesheet
+    ============================================= -->
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap-select.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/static/css//sendmoney.css">
+    
+    <!-- Colors Css -->
+    </head>
+    <body>
+    
+    <!-- Preloader -->
+    <div id="preloader" style="display: none;">
+      <div data-loader="dual-ring"></div>
+    </div>
+    <!-- Preloader End --> 
+    
+    <!-- Document Wrapper   
+    ============================================= -->
+    <div id="main-wrapper"> 
+      <!-- Header
+      ============================================= -->
+      <header id="header">
+        <div class="container">
+          <div class="header-row">
+            <div class="header-column justify-content-start"> 
+              <!-- Logo
+              ============================= -->
+              <!-- Logo end --> 
+              <!-- Collapse Button
+              ============================== -->
+              <!-- Collapse Button end --> 
+              
+              <!-- Primary Navigation
+              ============================== -->
+              <nav class="primary-menu navbar navbar-expand-lg">
+                <div id="header-nav" class="collapse navbar-collapse">
+                 
+                </div>
+              </nav>
+              <!-- Primary Navigation end --> 
+            </div>
+            <div class="header-column justify-content-end"> 
+              <!-- My Profile
+              ============================== -->
+              <nav class="login-signup navbar navbar-expand">
+                
+              </nav>
+              <!-- My Profile end --> 
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Header End --> 
+      
+      <!-- Content
+      ============================================= -->
+      <div id="content" class="py-5">
+        <div class="container"> 
+          
+          <!-- Steps Progress bar -->
+          <div class="row mt-4 mb-5">
+            <div class="col-lg-11 mx-auto">
+              <div class="row widget-steps">
+                <div class="col-4 step active">
+                  <div class="step-name">Details</div>
+                  <div class="progress">
+                    <div class="progress-bar"></div>
+                  </div>
+                  <a href="#" class="step-dot"></a> </div>
+                <div class="col-4 step disabled">
+                  <div class="step-name">Confirm</div>
+                  <div class="progress">
+                    <div class="progress-bar"></div>
+                  </div>
+                  <a href="#" class="step-dot"></a> </div>
+                <div class="col-4 step disabled">
+                  <div class="step-name">Success</div>
+                  <div class="progress">
+                    <div class="progress-bar"></div>
+                  </div>
+                  <a href="#" class="step-dot"></a> </div>
+              </div>
+            </div>
+          </div>
+          <h2 class="fw-900 text-center mt-3 text-13">Transfer Money</h2>
+          <p class="lead text-center mb-4 text-6">Send your money on anytime, anywhere in the world.</p>
+          <div class="row">
+            <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
+              <div class="bg-white shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4">
+                <h3 class="text-9 fw-700 mb-4 mt-4 mb-sm-5">Enter Transfer Details</h3>
+                <hr class="mx-n3 mx-sm-n5 mb-4">
+                <!-- Send Money Form
+                ============================ -->
+                <form id="form-send-money" method="post">
+                  <div class="send-form-group">
+                    <select name="account" id="account">
+                      <option value="20312321131">CHECKING ACCOUNT ({{ data.account.account_number }})</option>
+                    </select>
+                  </div>
+                  <div class="form-details">
+                      <div class="send-form-group bank">
+                        <input required name="bank_name" class="send-form-control" type="text" placeholder="Bank Name"/>
+                      </div>
+                      <div class="send-form-group">
+                        <input required name="dest_acc_number" class="send-form-control" type="text" placeholder="Enter Destination Account"/>
+                      </div>
+                      <div class="send-form-group">
+                        <input required name="amount" class="send-form-control" type="number" placeholder="Enter Amount"/>
+                      </div>
+                      <div class="send-form-group">
+                        <input required name="narration" class="send-form-control" type="text" placeholder="Enter Naration"/>
+                      </div>
+                      <div class="send-form-group">
+                        <input required name="pin" class="send-form-control" type="number" placeholder="Enter Transaction PIN"/>
+                      </div>
+                      <div class="send-form-group">
+                        <button type="submit" class="btn proceed-btn">Proceed</button>
+                      </div>
+                  </div>
+                </form>
+                <!-- Send Money Form end --> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Content end --> 
+    
+      
+    </div>
+    <!-- Document Wrapper end --> 
+  
+    <!-- Script --> 
+    <script src="/static/js/jquery/jquery.min.js"></script> 
+    <script src="/static/js/bootstrap//bootstrap.bundle.min.js"></script> 
+    <script src="/static/js/bootstrap//bootstrap-select.min.js"></script> 
+    <!-- Style Switcher --> 
+    <script src="/static/js/switcher.min.js"></script> 
+    <script src="/static/js/theme.js"></script>
+    
+    </body></html>
+
+  {% endblock %}

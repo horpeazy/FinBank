@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="ugf-block ugf-bg ugf-bg-1">
+  <div class="form-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-7 col-xl-6 mx-auto">
+        <div class="bg-white shadow-sm rounded p-5 pt-sm-4 pb-sm-5 px-sm-5 mb-4">
+        <div class="col-lg-12 col-md-6 p-5">
+          <div class="ugf-form-block-header">
+            <h1>Login to your account</h1>
+            <p>Enter username and password to get access to your account</p>
+          </div>
+          <div class="ugf-input-block">
+            <form action="" method="post">
+              {{ data.form.hidden_tag() }}
+              <div class="form-group">
+                {{ data.form.username }}
+                <label for="input-text"><i class="fa fa-envelope"></i></label>
+              </div>
+              <div class="form-group pass-block">
+                {{ data.form.password }}
+                <label for="input-pass"><i class="fa fa-unlock"></i></label>
+              </div>
+              <div class="form-group check-flex">
+                <div class="custom-checkbox">
+                </div>
+                <div class="forget-pass">
+                  <a href="/forgot-password">Forgot password?</a>
+                </div>
+              </div>
+                {{ data.form.submit }}
+            </form>
+          </div>
+          <div class="create-account mt-5">
+            <p class="text-6">Don't have an account ? <a href="register-1.html" class="fw-700"> Create an account</a></p>
+          </div>
+         
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

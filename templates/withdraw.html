@@ -1,0 +1,147 @@
+{% extends "main.html" %}
+{% block content %} 
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css//sendmoney.css">
+
+  <head>
+    <!-- Preloader -->
+    <div id="preloader" style="display: none;">
+      <div data-loader="dual-ring"></div>
+    </div>
+    <!-- Preloader End --> 
+    
+    <!-- Document Wrapper   
+    ============================================= -->
+    <div id="main-wrapper m-5"> 
+      <!-- Header
+      ============================================= -->
+      <header id="header">
+        <div class="container">
+          <div class="header-row">
+            <div class="header-column justify-content-start"> 
+              <!-- Logo
+              ============================= -->
+              <!-- Logo end --> 
+              <!-- Collapse Button
+              ============================== -->
+              <!-- Collapse Button end --> 
+              
+              <!-- Primary Navigation
+              ============================== -->
+              <nav class="primary-menu navbar navbar-expand-lg">
+                <div id="header-nav" class="collapse navbar-collapse">
+                 
+                </div>
+              </nav>
+              <!-- Primary Navigation end --> 
+            </div>
+            <div class="header-column justify-content-end"> 
+              <!-- My Profile
+              ============================== -->
+              <nav class="login-signup navbar navbar-expand">
+                
+              </nav>
+              <!-- My Profile end --> 
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Header End --> 
+      
+      <!-- Content
+      ============================================= -->
+      <div id="content" class="py-4">
+        <div class="container"> 
+          
+          <!-- Steps Progress bar -->
+          <div class="row mt-4 mb-5">
+            <div class="col-lg-11 mx-auto">
+              <div class="row widget-steps">
+                <div class="col-4 step active">
+                  <div class="step-name">Details</div>
+                  <div class="progress">
+                    <div class="progress-bar"></div>
+                  </div>
+                  <a href="#" class="step-dot"></a> </div>
+                <div class="col-4 step disabled">
+                  <div class="step-name">Confirm</div>
+                  <div class="progress">
+                    <div class="progress-bar"></div>
+                  </div>
+                  <a href="#" class="step-dot"></a> </div>
+                <div class="col-4 step disabled">
+                  <div class="step-name">Success</div>
+                  <div class="progress">
+                    <div class="progress-bar"></div>
+                  </div>
+                  <a href="#" class="step-dot"></a> </div>
+              </div>
+            </div>
+          </div>
+          <h2 class="fw-600 text-center mt-5 mb-4 text-17">Withdraw Money</h2>
+          <div class="row">
+            <div class="col-md-9 col-lg-7 col-xl-6 mx-auto"> 
+              <!-- Withdraw Money Form
+            ============================================= -->
+              <div class="bg-white shadow-sm rounded p-3 pt-sm-5 pb-sm-5 px-sm-5 mb-4">
+                <div class="text-center bg-primary p-4 rounded mb-4">
+                  <h3 class="text-10 text-white fw-400">${{ data.account.account_balance }}</h3>
+                  <p class="text-white">Available Balance</p>
+                  <form action="" method="post">
+                    <button class="btn btn-outline-light btn-sm shadow-none text-uppercase rounded-pill text-3">Withdraw Full Amount</button> </div>
+                  </form>
+                <form id="form-send-money" method="post" action="">
+                  <div class="send-form-group">
+                    <input required name="bank" class="send-form-control" type="text" placeholder="Bank Name"/>
+                  </div>
+                  <div class="send-form-group">
+                    <input required name="account" class="send-form-control" type="text" placeholder="Account Number"/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="youSend" class="form-label">Amount</label>
+                    <div class="input-group">
+                      <span class="input-group-text w-20">$</span>
+                      <input required type="text" class="form-control" data-bv-field="youSend" id="youSend" value="" placeholder="">
+                    </div>
+                  </div>
+                  <p class="text-muted mt-4 text-6">Transactions fees <span class="float-end d-flex align-items-center" id="fee">0 USD</span></p>
+                  <hr>
+                  <p class="text-6 fw-500 py-3">Amount to Withdraw <span class="float-end" id="total"></span></p>
+                  <div class="d-grid"><button type="submit" class="btn btn-primary p-4">Continue</button></div>
+                </form>
+              </div>
+              <!-- Withdraw Money Form end --> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Content end --> 
+      
+    </div>
+    <!-- Document Wrapper end --> 
+    
+    <!-- Back to Top
+    ============================================= --> 
+
+    <script>
+        const amountEl = document.getElementById("youSend")
+        const feeEl = document.getElementById("fee")
+        const totalEl = document.getElementById("total")
+        amountEl.addEventListener("change", (e) => {
+          let amount = parseInt(amountEl.value)
+          fee = amount * 0.05
+          total = amount + fee
+          feeEl.innerHTML = `${fee} USD`
+          totalEl.innerHTML = `${total} USD`
+        })
+      </script>
+    
+    
+    <!-- Script --> 
+    <script src="/static/js/jquery/jquery.min.js"></script> 
+    <script src="/static/js/bootstrap/bootstrap.bundle.min.js"></script> 
+    <script src="/static/js/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="/staticjs/switcher.min.js"></script> 
+    <script src="/staticjs/theme.js"></script>
+    
+{% endblock %}

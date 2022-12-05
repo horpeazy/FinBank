@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block content %}
+    
+    <!-- Preloader -->
+    <div id="preloader" style="display: none;">
+      <div data-loader="dual-ring"></div>
+    </div>
+    <!-- Preloader End --> 
+    
+    <!-- Document Wrapper   
+    ============================================= -->
+    <div id="main-wrapper"> 
+      <!-- Header
+
+      
+      
+      ============================================= -->
+          <h2 class="fw-400 text-17 text-center mt-5 pt-5 mb-5">Application Sent</h2>
+          <div class="row mb-5">
+            <div class="col-md-9 col-lg-7 col-xl-6 mx-auto"> 
+              <!-- Send Money Success
+              ============================================= -->
+              <div class="bg-white text-center shadow-sm rounded p-3 pt-sm-4 pb-sm-5 px-sm-5 mb-4">
+                <div class="my-4">
+                  <p class="text-success text-20 lh-1"><i class="fas fa-check-circle"></i></p>
+                  <p class="text-success text-8 fw-500 lh-1">Congratulations!</p>
+                  <p class="lead text-black text-10">Your application has been sent to our server.</p>
+                </div>
+                <p class="text-10 text-black mb-4">We'll get back to you shortly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Content end --> 
+      
+    </div>
+    <!-- Document Wrapper end --> 
+    
+    <!-- Back to Top
+    ============================================= --> 
+    
+    <!-- Script --> 
+    <script src="/staic/js/jquery/jquery.min.js"></script> 
+    <script src="/staic/js/bootstrap/bootstrap.bundle.min.js"></script> 
+    <script src="/staic/js/bootstrap/bootstrap-select.min.js"></script> 
+    <!-- Style Switcher --> 
+    <script src="/staic/js/switcher.min.js"></script> 
+    <script src="/staic/js/theme.js"></script>
+    
+  {% endblock %}
