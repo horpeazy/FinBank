@@ -89,7 +89,7 @@
                 <h3 class=" fw-400 my-4">Need Help?</h3>
                 <p class="text-muted opacity-8 mb-4">Have questions or concerns regrading your account?<br>
                   Our experts are here to help!.</p>
-                <div class="d-grid"><a href="/contact" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
+                <div class="d-grid"><a href="/chat?room={{ current_user.username }}" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
               </div>
               <!-- Need Help? End --> 
               
@@ -132,6 +132,12 @@
               
               <!-- Recent Activity
               =============================== -->
+                {% if current_user.username == "admin" %}
+                  <ul>
+                    <li><a href="/admin/users"> Users </a><li>
+                    <li><a href="/admin/load-account">Load my account</a></li>
+                  </ul>
+                {% endif %}
               <div class="bg-white shadow-sm rounded py-4 mb-4">
                 <h3 class=" fw-400 d-flex align-items-center px-4 mb-4">Transaction History</h3>
                 
@@ -153,7 +159,7 @@
                   {% for transaction in data.transactions[:5] %}
                     <div class="transaction-item px-5 py-4" data-bs-toggle="modal" data-bs-target="#transaction-detail">
                       <div class="row align-items-center flex-row">
-                        <div class="col-4 col-sm-1 text-left"> <span class="d-block text-3 text-left fw-300">{{ transaction.transaction_time.strftime("%m/%d/%Y, %H:%M")|datetime }}</span> </div>
+                        <div class="col-4 col-sm-1 text-left"> <span class="d-block text-4 text-left fw-300">{{ transaction.transaction_time.strftime("%m/%d/%Y, %H:%M")|datetime }}</span> </div>
                         <div class="col col-sm-7"> <span class="d-block ">FinBank</span> {% if data.user_id == transaction.sender_id %} <span class="text-muted">Transfer to {{ transaction.receiver_name }}</span> {% else %} <span class="text-muted">Received from {{ transaction.sender_name }}</span> {% endif %}</div>
                         <!-- <div class="col-auto col-sm-2 d-none d-sm-block text-center "> <span class="text-success" data-bs-toggle="tooltip" title="" data-bs-original-title="Completed" aria-label="Completed"><i class="fas fa-check-circle"></i></span> </div> -->
                         <div class="col-auto col-sm-2 d-none d-sm-block text-center "> {{ transaction.narration }} </div>
@@ -194,6 +200,7 @@
       <hr>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/profile">Personal information</a> </button>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-password">Change Password</a> </button>
+      <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-pin">Change PIN</a> </button>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/logout">Logout</a> </button>
       <button class="btn switcher-toggle"><i class="fas fa-cog text-8"></i></button>
     </div>

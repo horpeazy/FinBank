@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <style>
+            .user {
+                justify-content: space-between;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="m-5 p-5 mx-auto col-md-6 col-12">
+            {% for user in data.users %}
+                {% if user.username != "admin" %}
+                    <div class="bg-white p-4 m-4 d-flex user">
+                        <p class="text-6">{{ user.username }}</p>
+                        <div>
+                            <a href="/chat?room={{ user.username }}"><i class="fa fa-comment mx-3"></i></a>
+                            <a href="/admin/user/edit/{{ user.id }}"><i class="fa fa-edit"></i></a>
+                            
+                        </div>
+                    </div>
+                {%endif %}
+            {% endfor %}
+        </div>      
+    </body>
+    </html>
+{% endblock %}

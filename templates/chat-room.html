@@ -1,0 +1,320 @@
+{% extends "main.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Chat App</title>
+    <style>
+        :root {
+            --text-1: #333;
+            --text-2: #666;
+            --text-3: #999;
+            --line: #CCC;
+            --time-bg: #EEE;
+            --background: #F7F7F7;
+        }
+
+        ::selection {
+            color: white;
+            background: black;
+        }
+        
+        .messages-wrapper {
+            width: 550px;
+        }
+
+        #messages {
+            overflow: -moz-scrollbars-vertical;
+            height: 200px;
+            position: relative;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 450px;
+            z-index: 2;
+            box-sizing: border-box; 
+            background: #eeeded;
+            flex-shrink: 2;
+            overflow-y: auto;
+            box-shadow: outset 0 2rem 2rem -2rem rgb(0 0 0 / 5%), inset 0 -2rem 2rem -2rem rgb(0 0 0 / 5%);
+        }
+        #messages::-webkit-scrollbar {
+            width: 7px;
+        }
+        #messages::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
+        #messages::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .message-right {
+            display: flex;
+            justify-content: flex-end;
+            border-radius: 1.125rem 1.125rem 0 1.125rem;
+        }
+
+        #message_input {
+            border: none;
+            background-image: none;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            border-radius: 1.125rem;
+            flex-grow: 2;
+            box-shadow: 0 0 1rem rgb(0 0 0 / 10%), 0rem 1rem 1rem -1rem rgb(0 0 0 / 20%);
+            font-family: Red hat Display, sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.025em;
+        }
+
+        #message_input::placeholder {
+            color: var(--text-2);
+        }
+
+        .input {
+            box-sizing: border-box;
+            flex-basis: 4rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            padding: 25 20px;
+            background: white;
+        }
+
+        .input button {
+            background: none;
+            font-size: 15px;
+        }
+
+        @keyframes typing {
+            0%, 75%, 100% {
+                transform: translate(0, 0.25rem) scale(0.9);
+                opacity: 0.5;
+            }
+            
+            25% {
+                transform: translate(0, -0.25rem) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message-left {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .message {
+            padding: 0;
+            box-sizing: border-box;
+			padding: 0.5rem 1rem;
+			margin: 1rem;
+			background: #FFF;
+			border-radius: 1.125rem 1.125rem 1.125rem 0;
+			min-height: 2.25rem;
+			width: fit-content;
+			max-width: 66%;
+			
+			box-shadow: 
+				0 0 2rem rgba(black, 0.075),
+				0rem 1rem 1rem -1rem rgba(black, 0.1);
+            transition: 1s ease-in-out all;
+        }
+
+        .time {
+            font-size: 1.2rem;
+            color: #999;
+            width: 100%;
+            text-align: right;
+        }
+
+        .sender {
+            margin: 1rem 1rem 1rem auto;
+            border-radius: 1.125rem 1.125rem 0 1.125rem;
+            background: #333;
+            color: white;
+        }
+
+        #submit {
+            font-size: 20px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+
+        #submit:hover {
+            color: rgb(207, 23, 60);
+        }
+
+        .heading {
+            padding: 20px;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            background-image: -webkit-linear-gradient(0deg, rgb(138, 15, 61) 0%, rgb(207, 23, 60) 100%);
+        }
+
+        .chat-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-wrapper">
+        <div class="messages-wrapper">
+            {% if current_user.username == "admin" %}
+            <h1 class="heading text-10 text-sm-17">{{ data.receiver }}</h1>
+            {% else %}
+            <h1 class="heading">FinBank Customer Support</h1>
+            {% endif %}
+            <div id="messages" >
+            
+                {% for message in data.messages %}
+                    {% if message.sender_name == current_user.username %}
+                        <div class="message-right">
+                            <div class="message sender">
+                                {{ message.text }}
+                                <div class="time">{{ message.timestamp.strftime("%H:%M") }}&nbsp;</div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="message-left">
+                            <div class="message">
+                                {{ message.text }}
+                                <div class="time">{{ message.timestamp.strftime("%H:%M") }}&nbsp;</div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+            </div>
+            <form id="message_input_form">
+                <div class="input">
+                    <input type="text" id="message_input" placeholder="Enter your message here" >
+                    <i class="fa fa-paper-plane" id="submit" aria-hidden="true"></i>
+                </div>
+            </form>
+        </div>
+</div>
+
+
+
+
+<!-- <h3>Members</h3>
+<ul>
+    {% for member in room_members %}
+        <li>{{ member._id.username }}</li>
+    {% endfor %}
+</ul> -->
+
+
+</body>
+<script src="/static/js/socket.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script>
+    const socket = io.connect("http://127.0.0.1:5000");
+    chatHistory = document.getElementById("messages")
+    chatHistory.scrollTop = chatHistory.scrollHeight - chatHistory.clientHeight;;
+
+    socket.on('connect', function () {
+        socket.emit('join_room', {
+            room: "{{ data.room.room_name  }}"
+        });
+
+        let message_input = document.getElementById('message_input');
+
+        document.getElementById('submit').onclick = function (e) {
+            e.preventDefault();
+            let message = message_input.value.trim();
+            if (message.length) {
+                socket.emit('send_message', {
+                    room: "{{ data.room.room_name }}",
+                    message: message,
+                    user_id: "{{ current_user.id }}"
+                })
+            }
+            message_input.value = '';
+            message_input.focus();
+            chatHistory = document.getElementById("messages")
+            chatHistory.scrollTop = chatHistory.scrollHeight - chatHistory.clientHeight;
+        }
+
+        document.getElementById('message_input_form').onsubmit = function (e) {
+            e.preventDefault();
+            let message = message_input.value.trim();
+            if (message.length) {
+                socket.emit('send_message', {
+                    room: "{{ data.room.room_name }}",
+                    message: message,
+                    user_id: "{{ current_user.id }}"
+                })
+            }
+            message_input.value = '';
+            message_input.focus();
+            chatHistory = document.getElementById("messages")
+            chatHistory.scrollTop = chatHistory.scrollHeight - chatHistory.clientHeight;
+        }
+    });
+
+    let page = 0;
+
+   
+
+    function prepend_message(message, username, created_at) {
+        const newNode = document.createElement('div');
+        newNode.innerHTML = `<b>${username}&nbsp;[${created_at}]:&nbsp;</b> ${message}`;
+        const messages_div = document.getElementById('messages');
+        messages_div.insertBefore(newNode, messages_div.firstChild);
+    }
+
+    window.onbeforeunload = function () {
+        socket.emit('leave_room', {
+            room: "{{ data.room.room_name }}"
+        })
+    };
+
+    socket.on('receive_message', function (data) {
+        console.log(data);
+        const newNode = document.createElement('div');
+        newNode.innerHTML = `<b>&nbsp;[${data.created_at}]:&nbsp;</b> ${data.message}`;
+        username = "{{ current_user.username }}"
+        if (username === data.sender ) {
+            newNode.innerHTML = `
+                            <div class="message-right">
+                                <div class="message sender">
+                                    ${ data.message }
+                                    <div class="time">${ data.timestamp }&nbsp;</div>
+                                </div>
+                            </div>
+                            `
+        } else {
+            newNode.innerHTML = `
+                            <div class="message-left">
+                                <div class="message ">
+                                    ${ data.message }
+                                    <div class="time">${ data.timestamp }&nbsp;</div>
+                                </div>
+                            </div>
+                            `
+        }
+        document.getElementById('messages').appendChild(newNode);
+        chatHistory = document.getElementById("messages")
+        chatHistory.scrollTop = chatHistory.scrollHeight - chatHistory.clientHeight;;
+    });
+
+    socket.on('join_room_announcement', function (data) {
+        console.log(data);
+    });
+
+    socket.on('leave_room_announcement', function (data) {
+        console.log(data);
+    });
+</script>
+</html>
+
+{% endblock %}

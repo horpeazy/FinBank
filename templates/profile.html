@@ -59,11 +59,12 @@
               <!-- Profile Details
               =============================== -->
               <div class="bg-white shadow-sm rounded text-center p-5 mb-4">
-                <div class="profile-thumb mt-3 mb-4"> <img class="rounded-circle" src="/static/images/profile-thumb.jpg" alt="">
+                <!-- <div class="profile-thumb mt-3 mb-4"> <img class="rounded-circle" src="/static/images/profile-thumb.jpg" alt="">
                   
-                </div>
-                <p class=" fw-500 mb-2">Hello, Smith Rhodes</p>
-                <p class="mb-2"><a href="settings-profile.html" class=" text-light" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit Profile" aria-label="Edit Profile"><i class="fas fa-edit text-8"></i></a></p>
+                </div> -->
+                <p class=" fw-500 mb-2 text-6">Hello, <bold class="text-7">{{ data.account.first_name|upper }} {{ data.account.last_name|upper }} </bold></p>
+                <p class=" fw-500 mb-2">ACCOUNT # <bold class="text-7">{{ data.account.account_number|upper }}</bold></p>
+                <!-- <p class="mb-2"><a href="" class=" text-light" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit Profile" aria-label="Edit Profile"><i class="fas fa-edit text-8"></i></a></p> -->
               </div>
               <!-- Profile Details End --> 
               
@@ -71,10 +72,10 @@
               =============================== -->
               <div class="bg-white shadow-sm rounded text-center p-5 mb-4">
                 <div class="7 text-light my-3"><i class="fas fa-wallet text-20 text-light"></i></div>
-                <h3 class="text-15 fw-400">$2956.00</h3>
+                <h3 class="text-15 fw-400">${{ data.account.account_balance }}</h3>
                 <p class="mb-2 text-muted opacity-8">Available Balance</p>
                 <hr class="mx-n4">
-                <div class="d-flex"><a href="withdraw-money.html" class="btn-link me-auto">Withdraw</a> <a href="deposit-money.html" class="btn-link ms-auto">Deposit</a></div>
+                <div class="d-flex"><a href="/withdraw" class="btn-link me-auto">Withdraw</a> <a href="/send-money" class="btn-link ms-auto">Send Money</a></div>
               </div>
               <!-- Available Balance End --> 
               
@@ -85,7 +86,7 @@
                 <h3 class=" fw-400 my-4">Need Help?</h3>
                 <p class="text-muted opacity-8 mb-4">Have questions or concerns regrading your account?<br>
                   Our experts are here to help!.</p>
-                <div class="d-grid"><a href="#" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
+                <div class="d-grid"><a href="/chat?room={{ current_user.username }}" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
               </div>
               <!-- Need Help? End -->  
               
@@ -103,18 +104,18 @@
                 <hr class="mx-n4 mb-4">
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Name:</p>
-                  <p class="col-sm-9 text-5">Smith Rhodes</p>
+                  <p class="col-sm-9 text-5">{{ data.account.first_name }} {{ data.account.last_name }}</p>
                 </div>
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth:</p>
-                  <p class="col-sm-9 text-5">12-09-1982</p>
+                  <p class="col-sm-9 text-5">{{ data.account.dob.strftime("%m/%d/%Y") }}</p>
                 </div>
                 <div class="row gx-3 align-items-baseline">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Address:</p>
-                  <p class="col-sm-9 text-5">4th Floor, Plot No.22, Above Public Park, 145 Murphy Canyon Rd,  Suite 100-18,<br>
-                    San Ditego,<br>
-                    California - 22434,<br>
-                    United States.</p>
+                  <p class="col-sm-9 text-5">{{ data.account.home_address }},<br>
+                    {{ data.account.city }},<br>
+                    {{ data.account.state }} - {{ data.account.zip_code }},<br>
+                    {{ data.account.country }}.</p>
                 </div>
               </div>
               
@@ -122,7 +123,7 @@
               <!-- Account Settings
               ============================================= -->
               <div class="bg-white shadow-sm rounded p-5 mb-4">
-                <h3 class="text-7 fw-500 d-flex align-items-center mb-4">Account Settings</h3>
+                <h3 class="text-7 fw-600 d-flex align-items-center mb-4">Account Settings</h3>
                 <hr class="mx-n4 mb-4">
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Language:</p>
@@ -141,31 +142,35 @@
               <!-- Email Addresses
               ============================================= -->
               <div class="bg-white shadow-sm rounded p-5 mb-4">
-                <h3 class="text-7 fw-500 d-flex align-items-center mb-4">Email Addresses</h3>
+                <h3 class="text-7 fw-600 d-flex align-items-center mb-4">Email Addresses</h3>
                 <hr class="mx-n4 mb-4">
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Email ID:</p>
-                  <p class="col-sm-9 text-5 d-sm-inline-flex d-md-flex align-items-center">smithrhodes1982@gmail.com<span class="badge bg-info text-1 fw-500 rounded-pill px-2 py-1 ms-2">Primary</span></p>
+                  <p class="col-sm-9 text-5 d-sm-inline-flex d-md-flex align-items-center">{{ data.account.email_address }}<span class="badge bg-info text-1 fw-500 rounded-pill px-2 py-1 ms-2">Primary</span></p>
                 </div>
+                {% if data.account.alt_email_address %}
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Email ID:</p>
-                  <p class="col-sm-9 text-5">smith.rhodes@outlook.com</p>
+                  <p class="col-sm-9 text-5">{{ data.account.alt_email_address }}</p>
                 </div>
+                {% endif %}
               </div>
               
               <!-- Phone
               ============================================= -->
               <div class="bg-white shadow-sm rounded p-5 mb-4">
-                <h3 class="text-7 fw-500 d-flex align-items-center mb-4">Phone</h3>
+                <h3 class="text-7 fw-600 d-flex align-items-center mb-4">Phone</h3>
                 <hr class="mx-n4 mb-4">
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Mobile:</p>
-                  <p class="col-sm-9 text-5 align-items-center d-sm-inline-flex d-md-flex">+1 202-555-0125<span class="badge bg-info text-1 fw-500 rounded-pill px-2 py-1 ms-2">Primary</span></p>
+                  <p class="col-sm-9 text-5 align-items-center d-sm-inline-flex d-md-flex">{{ data.account.phone_number }}<span class="badge bg-info text-1 fw-500 rounded-pill px-2 py-1 ms-2">Primary</span></p>
                 </div>
+                {% if data.account.alt_phone_number %}
                 <div class="row gx-3 align-items-center">
                   <p class="col-sm-3 text-5 text-muted text-sm-end mb-0 mb-sm-3">Mobile:</p>
-                  <p class="col-sm-9 text-5">+1 303-666-0512</p>
+                  <p class="col-sm-9 text-5">{{ data.account.alt_phone_number }}</p>
                 </div>
+                {% endif %}
               </div>
               <!-- Phone End --> 
               
@@ -188,6 +193,7 @@
       <hr>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/profile">Personal information</a> </button>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-password">Change Password</a> </button>
+      <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-pin">Change PIN</a> </button>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/logout">Logout</a> </button>
       <button class="btn switcher-toggle"><i class="fas fa-cog text-8"></i></button>
     </div>

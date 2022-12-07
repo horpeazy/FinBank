@@ -43,7 +43,7 @@ class AccountForm(FlaskForm):
     dob = DateField(validators=[
         InputRequired()], render_kw={"class": "account-form-control", "type": "date" ,"placeholder": "Date of birth"})
 
-    email = StringField(validators=[
+    email_address = StringField(validators=[
         InputRequired()], render_kw={"class": "account-form-control", "type": "email" ,"placeholder": "Email Address"})
 
     phone_number = StringField(validators=[
@@ -62,7 +62,10 @@ class AccountForm(FlaskForm):
     state = StringField(validators=[
         InputRequired()], render_kw={"class": "account-form-control", "type": "text" ,"placeholder": "State"})
 
+    country = StringField(validators=[
+        InputRequired()], render_kw={"class": "account-form-control", "type": "text" ,"placeholder": "Country"})
+
     zip_code = StringField(validators=[
         InputRequired()], render_kw={"id": "zipCode", "class": "required account-form-control", "type": "number", "placeholder": "Enter zip code"})
 
-    submit = SubmitField('Continue', render_kw={"type": "submit","id": "continue", "class": "btn mx-auto float-md-end py-3 px-5 mt-5 text-7 text-white w-md-25"})
+    submit = SubmitField('Submit', render_kw={"type": "submit","id": "continue", "class": "btn mx-auto float-md-end py-3 px-5 mt-5 text-7 text-white w-md-25"})

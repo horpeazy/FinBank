@@ -31,10 +31,15 @@
                                         <p>Weakness of will, which is the same as their duty through <br> saying through shrinking from toil.</p>
                                     </div>
                                                                                 <div class="btns-box">
-                                        <a class="btn-one" href="/contact">
-                                            <span class="txt">
-                                                Make an Appointment                                                    </span>
-                                        </a>
+                                                                                    {% if current_user.is_authenticated %}
+                                                                                    <a class="btn-one" href="/contact">
+                                                                                        <span class="txt">Make an Appointment</span>
+                                                                                    </a>
+                                                                                    {% else %}
+                                                                                    <a class="btn-one" href="/create-account">
+                                                                                        <span class="txt">Create account</span>
+                                                                                    </a>
+                                                                                    {% endif %}
                                     </div>
                                                                             </div>
                             </div>
@@ -43,7 +48,7 @@
                 </div>
             </div>
                                 <div class="slider-buttom-box">
-                <a class="style2" href="/payment">Make Payment <span class="icon-play-button"></span></a>                        <a href="/contact">Make an Enquiry  <span class="icon-play-button"></span></a>                    </div>
+                <a class="style2" href="/send-money">Make Payment <span class="icon-play-button"></span></a>                        <a href="/contact">Make an Enquiry  <span class="icon-play-button"></span></a>                    </div>
                                                     <!--Start Single Swiper Slide-->
             <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 328px; transition-duration: 0ms; opacity: 1; transform: translate3d(-328px, 0px, 0px);">
                                         <div class="image-layer" style="background-image: url(/static/images/slide-v1-1.jpg);"></div>
@@ -60,10 +65,15 @@
                                         <p>On the other hand, we denounce with righteous indignation<br> and dislike men who are so beguiled.</p>
                                     </div>
                                                                                 <div class="btns-box">
-                                        <a class="btn-one" href="/contact">
-                                            <span class="txt">
-                                                Make an Appointment                                                    </span>
-                                        </a>
+                                                                                    {% if current_user.is_authenticated %}
+                                                                                    <a class="btn-one" href="/contact">
+                                                                                        <span class="txt">Make an Appointment</span>
+                                                                                    </a>
+                                                                                    {% else %}
+                                                                                    <a class="btn-one" href="/create-account">
+                                                                                        <span class="txt">Create account</span>
+                                                                                    </a>
+                                                                                    {% endif %}
                                     </div>
                                                                             </div>
                             </div>
@@ -88,10 +98,15 @@
                                         <p>Their duty through weakness of will, which is the same as<br> saying through shrinking from toil.</p>
                                     </div>
                                                                                 <div class="btns-box">
+                                        {% if current_user.is_authenticated %}
                                         <a class="btn-one" href="/contact">
-                                            <span class="txt">
-                                                Make an Appointment                                                    </span>
+                                            <span class="txt">Make an Appointment</span>
                                         </a>
+                                        {% else %}
+                                        <a class="btn-one" href="/create-account">
+                                            <span class="txt">Create account</span>
+                                        </a>
+                                        {% endif %}
                                     </div>
                                                                             </div>
                             </div>
@@ -116,10 +131,15 @@
                                         <p>Weakness of will, which is the same as their duty through <br> saying through shrinking from toil.</p>
                                     </div>
                                                                                 <div class="btns-box">
-                                        <a class="btn-one" href="/contact">
-                                            <span class="txt">
-                                                Make an Appointment                                                    </span>
-                                        </a>
+                                                                                    {% if current_user.is_authenticated %}
+                                                                                    <a class="btn-one" href="/contact">
+                                                                                        <span class="txt">Make an Appointment</span>
+                                                                                    </a>
+                                                                                    {% else %}
+                                                                                    <a class="btn-one" href="/create-account">
+                                                                                        <span class="txt">Create account</span>
+                                                                                    </a>
+                                                                                    {% endif %}
                                     </div>
                                                                             </div>
                             </div>
@@ -143,10 +163,15 @@
                                         <p>On the other hand, we denounce with righteous indignation<br> and dislike men who are so beguiled.</p>
                                     </div>
                                                                                 <div class="btns-box">
-                                        <a class="btn-one" href="/contact">
-                                            <span class="txt">
-                                                Make an Appointment                                                    </span>
-                                        </a>
+                                                                                    {% if current_user.is_authenticated %}
+                                                                                    <a class="btn-one" href="/contact">
+                                                                                        <span class="txt">Make an Appointment</span>
+                                                                                    </a>
+                                                                                    {% else %}
+                                                                                    <a class="btn-one" href="/create-account">
+                                                                                        <span class="txt">Create account</span>
+                                                                                    </a>
+                                                                                    {% endif %}
                                     </div>
                                                                             </div>
                             </div>

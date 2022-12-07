@@ -90,7 +90,7 @@
                 <h3 class=" fw-400 my-4">Need Help?</h3>
                 <p class="text-muted opacity-8 mb-4">Have questions or concerns regrading your account?<br>
                   Our experts are here to help!.</p>
-                <div class="d-grid"><a href="/contact" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
+                <div class="d-grid"><a href="/chat?room={{ current_user.username }}" class="btn btn-primary" style="padding: 15px !important; font-size: 14px;">Chat with Us</a></div>
               </div>
               <!-- Need Help? End --> 
               
@@ -189,6 +189,7 @@
       <hr>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/profile">Personal information</a> </button>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-password">Change Password</a> </button>
+      <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/change-pin">Change PIN</a> </button>
       <button class="btn btn-dark btn-sm border-0 fw-400 rounded-0 shadow-none d-block" style="width: 100%; margin-bottom: 10px; padding: 10px;"><a class="text-5 text-white" href="/logout">Logout</a> </button>
       <button class="btn switcher-toggle"><i class="fas fa-cog text-8"></i></button>
     </div>
