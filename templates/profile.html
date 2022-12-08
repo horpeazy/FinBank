@@ -59,9 +59,9 @@
               <!-- Profile Details
               =============================== -->
               <div class="bg-white shadow-sm rounded text-center p-5 mb-4">
-                <!-- <div class="profile-thumb mt-3 mb-4"> <img class="rounded-circle" src="/static/images/profile-thumb.jpg" alt="">
+                <div class="profile-thumb mt-3 mb-4"> <img width="85%" height="auto" class="rounded-circle" src="{{ url_for('uploaded_file', filename=data.profile_image) }}" alt="">
                   
-                </div> -->
+                </div>
                 <p class=" fw-500 mb-2 text-6">Hello, <bold class="text-7">{{ data.account.first_name|upper }} {{ data.account.last_name|upper }} </bold></p>
                 <p class=" fw-500 mb-2">ACCOUNT # <bold class="text-7">{{ data.account.account_number|upper }}</bold></p>
                 <!-- <p class="mb-2"><a href="" class=" text-light" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit Profile" aria-label="Edit Profile"><i class="fas fa-edit text-8"></i></a></p> -->

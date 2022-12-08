@@ -190,8 +190,13 @@
                                     </a>
 
                                     <ul class="main-menu__list">
-                                        <li id="menu-item-360" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-360  current"><a title="Home" href="#" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Home</a>
+                                        {% if request.endpoint == "home" %}
+                                        <li id="menu-item-360" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-360 current"><a title="Home" href="/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Home</a>
     </li>
+    {% else %}
+    <li id="menu-item-360" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-360"><a title="Home" href="/" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Home</a>
+    </li>
+    {% endif %}
     <li id="menu-item-376" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-376 dropdown"><a title="Services" href="#" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">Services</a>
     <ul role="menu" class="submenu">
     <li id="menu-item-377" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-377 "><a title="Accounts" href="/accounts">Accounts</a>
@@ -213,12 +218,28 @@
     <li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-412"><a title="Gold Loan" href="/gold-loan">Gold Loan</a></li>
     </ul>
     </li>
+    {% if request.endpoint == "about" %}
+    <li id="menu-item-380" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-380 current"><a title="About" href="/about" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">About Us</a>
+    {% else %}
     <li id="menu-item-380" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-380"><a title="About" href="/about" data-toggle="dropdown1" class="hvr-underline-from-left1" aria-expanded="false" data-scroll="" data-options="easing: easeOutQuart">About Us</a>
+    {% endif %}
+    {% if request.endpoint == "contact" %}
+    <li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403 current"><a title="Get In Touch" href="/contact" class="hvr-underline-from-left1" data-scroll="" data-options="easing: easeOutQuart">Contact</a></li>
+    {% else %}
     <li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403"><a title="Get In Touch" href="/contact" class="hvr-underline-from-left1" data-scroll="" data-options="easing: easeOutQuart">Contact</a></li>
+    {% endif %}
     {% if current_user.is_authenticated %}
+    {% if request.endpoint == "account" %}
+    <li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403 current"><a title="Get In Touch" href="/dashboard" class="hvr-underline-from-left1" data-scroll="" data-options="easing: easeOutQuart">My Account</a></li>
+    {% else %}
     <li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403"><a title="Get In Touch" href="/dashboard" class="hvr-underline-from-left1" data-scroll="" data-options="easing: easeOutQuart">My Account</a></li>
+    {% endif %}
+    {% else %}
+    {% if request.endpoint == "login" %}
+    <li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403 current"><a title="Get In Touch" href="/login" class="hvr-underline-from-left1" data-scroll="" data-options="easing: easeOutQuart">Login</a></li>
     {% else %}
     <li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-403"><a title="Get In Touch" href="/login" class="hvr-underline-from-left1" data-scroll="" data-options="easing: easeOutQuart">Login</a></li>
+    {% endif %}
     {% endif %}
 
                                     

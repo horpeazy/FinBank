@@ -63,7 +63,7 @@
 
      </div></div>
 
-<form  action="" method="post">
+<form  action="" method="post" enctype="multipart/form-data">
     {{ data.form.hidden_tag() }}
 	<h2 class="my-5 sub-title pb-2" style="border-bottom: 2px solid rgb(138, 15, 61)">
 		Personal information
@@ -85,7 +85,7 @@
             <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
                 <div class="account-form-group" style="flex-basis: 50%;">
                     <label for="account" class=" fw-600">ID type</label>
-                    <select name="account" id="account">
+                    <select required name="account" id="account">
                         <option value="20312321131">Drivers License/State ID</option>
                         <option value="20312321131">Matricula Card</option>
                         <option value="20312321131">Other</option>
@@ -100,7 +100,7 @@
             <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
                 <div class="account-form-group" style="flex-basis: 50%;">
                     <label for="account" class=" fw-600">Country Issued</label>
-                    <select name="account" id="account">
+                    <select required name="account" id="account">
                         <option value="20312321131">United States(US)</option>
                         <option value="20312321131">United Kindgom(UK)</option>
                         <option value="20312321131">Other</option>
@@ -108,14 +108,14 @@
                 </div>
                 <div class="account-form-group bank" style="flex-basis: 50%;">
                     <label for="expiry" class=" fw-600">Expiry Date</label>
-                    <input name="expiry" class="account-form-control" type="date" placeholder="Expiry date"/>
+                    <input required name="expiry" class="account-form-control" type="date" placeholder="Expiry date"/>
                 </div>
             </div>
 
             <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
                 <div class="account-form-group" style="flex-basis: 50%;">
                     <label for="account" class=" fw-600">Citizenship</label>
-                    <select name="account" id="account">
+                    <select required name="account" id="account">
                         <option value="20312321131">US Citizen</option>
                         <option value="20312321131">Resident Alien</option>
                         <option value="20312321131">Non-Resident Alien</option>
@@ -137,7 +137,7 @@
             <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
                 <div class="account-form-group" style="flex-basis: 20%;">
                     <label for="account" class=" fw-600">Phone type</label>
-                    <select name="account" id="account">
+                    <select required name="account" id="account">
                         <option value="20312321131">Home</option>
                         <option value="20312321131">Mobile</option>
                         <option value="20312321131">Work</option>
@@ -152,7 +152,7 @@
             <div class="d-md-flex" style="justify-content: space-between; gap: 20px;">
                 <div class="account-form-group" style="flex-basis: 20%;">
                     <label for="alt_phone_type" class=" fw-600">Alternate Phone type</label>
-                    <select name="alt_phone_type" id="account">
+                    <select required name="alt_phone_type" id="account">
                         <option value="20312321131">Home</option>
                         <option value="20312321131">Mobile</option>
                         <option value="20312321131">Work</option>
@@ -200,7 +200,7 @@
 
             <div class="account-form-group last" style="flex-basis: 50%;">
                 <label for="occupation" class=" fw-600">Occupation</label>
-                <select name="occupation" id="occupation">
+                <select required name="occupation" id="occupation">
                     <option value="">
                         Select one
                       </option>
@@ -218,25 +218,6 @@
                 </select>
             </div>
             
-            <!-- <div class="account-form-group last d-block">
-                <label for="occupation" class=" fw-600">Occupation</label>
-                <select name="occupation" id="occupation">
-                    <option value="">
-                        Select one
-                      </option>
-                        <option value="EXECUTIVE">Executive, Professional, Semi Prof</option>
-                        <option value="MANAGER">Manager, Owner, Office</option>
-                        <option value="PROD_SALES">Prod, Sales, Trade, Service, Labor</option>
-                        <option value="MILITARY">Military</option>
-                        <option value="TEACHER">Teacher</option>
-                        <option value="DIPLOMAT">Diplomat/Government Official</option>
-                        <option value="RETIRED">Retired</option>
-                        <option value="HOMEMAKER">Homemaker</option>
-                        <option value="STUDENT">Student</option>
-                        <option value="UNEMPLOYED_WITH_INCOME">Unemployed w/income</option>
-                        <option value="UNEMPLOYED_WITHOUT_INCOME">Unemployed-no income</option>
-                </select>
-            </div>  -->
             <br>
 
             <div class="d-md-flex mt-5" style="justify-content: space-between; gap: 20px;">
@@ -260,10 +241,9 @@
                     </div>
                     <div class="form">
                       <div class="form-group">
-                        <input name="profile_image" type="file" class="form-control" id="fileup2" hidden="">
-                        <label class="custom-file" for="fileup2"><img src="images/card/cloud.png" alt=""><p>Drag file(s) here to upload, or <span class="">Click Here</span></p></label>
+                        <input required name="fileup1" type="file" class="form-control" id="fileup1" hidden="">
+                        <label class="custom-file" for="fileup1"><img src="images/card/cloud.png" alt=""><p>Drag file(s) here to upload, or <span class="">Click Here</span></p></label>
                       </div>
-                      <!-- <button class="btn">Upload File</button> -->
                     </div>
                   </div>
 
@@ -277,7 +257,7 @@
                     </div>
                     <div class="form">
                       <div class="form-group">
-                        <input name="id_image" type="file" class="form-control" id="fileup2" hidden="">
+                        <input required name="id_image" type="file" class="form-control" id="fileup2" hidden="">
                         <label class="custom-file" for="fileup2"><img src="images/card/cloud.png" alt=""><p>Drag file(s) here to upload, or <span class="">Click Here </span></p></label>
                       </div>
                       <!-- <button class="btn">Upload File</button> -->
@@ -295,13 +275,13 @@
 					<div class="inline-field" style="float: left; margin: 0 15px 4px 0; white-space: nowrap; color: #44464a;">
 						<div class="ui-radio"><label for="accountOwnershipIndividual" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
 							Individual
-						</label><input id="accountOwnershipIndividual" name="accountOwnership.accountOwnership" class="required" ng-model="accountOwnership.accountOwnership" type="radio" value="individual"></div>
+						</label><input required id="accountOwnershipIndividual" name="accountOwnership.accountOwnership" class="required" ng-model="accountOwnership.accountOwnership" type="radio" value="individual"></div>
 						
 					</div>
 					<div class="inline-field">
 						<div class="ui-radio"><label for="accountOwnershipJoint" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
 							Joint
-						</label><input id="accountOwnershipJoint" name="accountOwnership.accountOwnership" class="required" ng-model="accountOwnership.accountOwnership" type="radio" value="joint"></div>
+						</label><input required id="accountOwnershipJoint" name="accountOwnership.accountOwnership" class="required" ng-model="accountOwnership.accountOwnership" type="radio" value="joint"></div>
 						
 					</div>
 				</fieldset>
@@ -321,13 +301,13 @@
 					<div class="inline-field" style="float: left; margin: 0 15px 4px 0; white-space: nowrap; color: #44464a;">
 						<div class="ui-radio"><label for="onlineCustomerYes" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
 							Yes
-						</label><input id="onlineCustomerYes" name="onlineBankingCustomer.onlineBankingCustomer" class="required" ng-model="onlineBankingCustomer.onlineBankingCustomer" type="radio" value="yes"></div>
+						</label><input required id="onlineCustomerYes" name="onlineBankingCustomer.onlineBankingCustomer" class="required" ng-model="onlineBankingCustomer.onlineBankingCustomer" type="radio" value="yes"></div>
 						
 					</div>
 					<div class="inline-field">
 						<div class="ui-radio"><label for="onlineCustomerNo" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" style="border-style: none;padding-right: 5px; color: #44464a;">
 							No
-						</label><input id="onlineCustomerNo" name="onlineBankingCustomer.onlineBankingCustomer" class="required" ng-model="onlineBankingCustomer.onlineBankingCustomer" type="radio" value="no"></div>
+						</label><input required id="onlineCustomerNo" name="onlineBankingCustomer.onlineBankingCustomer" class="required" ng-model="onlineBankingCustomer.onlineBankingCustomer" type="radio" value="no"></div>
 						
 					</div>
 				</fieldset>
