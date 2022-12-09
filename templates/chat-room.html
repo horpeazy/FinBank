@@ -203,20 +203,15 @@
 </div>
 
 
-
-
-<!-- <h3>Members</h3>
-<ul>
-    {% for member in room_members %}
-        <li>{{ member._id.username }}</li>
-    {% endfor %}
-</ul> -->
-
-
 </body>
 <script src="/static/js/socket.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script>
+    document.getElementById('submit').onclick = function (e) {
+            e.preventDefault();
+    }
+    document.getElementById('message_input_form').onsubmit = function (e) {
+            e.preventDefault();
+    }
     const socket = io.connect("http://8811c5113a8b.3d34c52b.alx-cod.online");
     chatHistory = document.getElementById("messages")
     chatHistory.scrollTop = chatHistory.scrollHeight - chatHistory.clientHeight;;

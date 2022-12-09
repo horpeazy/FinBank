@@ -12,3 +12,7 @@
 2022-12-07 02:33:47,287 INFO: errors [in /horpeazy/FinBank/app.py:658]
 2022-12-07 03:12:11,787 INFO: errors [in /horpeazy/FinBank/app.py:658]
 2022-12-07 04:31:14,990 INFO: errors [in /horpeazy/FinBank/app.py:658]
+1980-01-01 00:41:44,771 INFO: errors [in app.py:675]
+1980-01-01 00:48:07,219 INFO: errors [in C:\Users\User\Desktop\FinBank\app.py:675]
+1980-01-01 00:49:56,542 INFO: errors [in C:\Users\User\Desktop\FinBank\app.py:676]
+1980-01-01 00:50:18,771 INFO: errors [in C:\Users\User\Desktop\FinBank\app.py:676]

@@ -1,22 +1,32 @@
 from datetime import datetime
 import os
+from os.path import join, dirname, realpath
 import dateutil.parser
 import babel
 import sys
-from flask import Flask, render_template, request, url_for, redirect, flash, session, abort
+from flask import (
+    Flask, render_template, 
+    request, url_for, redirect, 
+    flash, session, abort, send_from_directory
+    )
 import logging
 from logging import Formatter, FileHandler
 from flask_socketio import SocketIO, join_room, leave_room
 from flask_cors import CORS
 from sqlalchemy import or_
 from flask_migrate import Migrate
-from flask_login import login_user, LoginManager, login_required, logout_user, current_user
+from flask_login import (
+    login_user, LoginManager, 
+    login_required, logout_user, 
+    current_user
+    )
 from flask_bcrypt import Bcrypt
+from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 from models import Room, db, User, Account, Transaction, Messages
 from forms import LoginForm, RegisterForm, AccountForm
 from flask_mail import Mail, Message
-from utils import generate_account, generate_token
+from utils import generate_account, generate_token, allowed_file
 from dotenv import load_dotenv, find_dotenv
 
 
@@ -31,6 +41,7 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_handlers=True) #, ping_
 mail = Mail(app)                # instantiate the mail class
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config["UPLOAD_FOLDER"] = join(dirname(realpath(__file__)), "static/uploads/..")
 app.config['MAIL_SERVER']= os.environ.get('MAIL_SERVER')
 app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
@@ -53,13 +64,11 @@ login_manager.login_view = 'login'
 
 def send_message(recipient, message):
     try:
-        print("Start")
         msg = Message(
                         'OTP Verification Code',
                         sender =('FinBank', 'iyamuhope.nosa647@gmail.com'),
                         recipients = [recipient],
                     )
-        print("continue")
         msg.body = message
         result = mail.send(msg)
     except:
@@ -93,6 +102,8 @@ def load_user(user_id):
 #----------------------------------------------------------------------------#
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect("/")
     form = LoginForm()
     data = {
         "form": form,
@@ -155,14 +166,14 @@ def all_users():
     }
     return render_template("users.html", data=data)
 
-@app.route('/images/<int:id>/logo')
-def image_url(id):
-    image = Account.query.get_or_404(id)
-    return app.response_class(image.profile_image, mimetype='application/octet-stream')
+@app.route('/uploads/<filename>')
+@login_required
+def uploaded_file(filename):
+    return send_from_directory(app.config["UPLOAD_FOLDER"],
+                                filename)
 
 @app.route("/")
 def home():
-    print(current_user.get_id())
     return render_template("home.html", data={"title": "Home"})
 
 @app.route("/profile")
@@ -187,11 +198,18 @@ def create_account():
     if request.method == "POST":
         try:
             if form.validate_on_submit():
+                if "fileup1" not in request.files:
+                    flash("Please upload a passport photo")
+                    return redirect(request.url)
+                file = request.files["fileup1"]
+                if file.filename == "":
+                    flash("Please upload passport photo")
+                    return redirect(request.url)
                 new_account = Account()
                 form.populate_obj(new_account)
                 new_account.account_number = generate_account()
                 if request.form.get("first_name") == "admin":
-                    new_account.account_balance = 100000000
+                    new_account.account_balance = 10000000
                 else:
                     new_account.account_balance = 0
                 new_account.transaction_pin = 1234
@@ -203,6 +221,9 @@ def create_account():
                 else:
                     username = form.first_name.data.lower() + form.last_name.data.lower()
                 full_name = request.form.get("last_name") + " " + request.form.get("first_name")
+                if file and allowed_file(file.filename):
+                    filename = secure_filename(new_account.first_name + ".png")
+                    file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename.lower()))
                 new_user = User(username=username, password=hashed_password, full_name=full_name)
                 db.session.add(new_user)
                 db.session.flush()
@@ -277,6 +298,7 @@ def account():
     data = {
         "title": "Dashboard",
         "account": account,
+        "profile_image": account.first_name.lower() + ".png",
         "transactions": transactions[::-1],
         "user_id": int(user_id)
     }
@@ -286,7 +308,6 @@ def account():
 @login_required
 def transactions():
     user_id = current_user.get_id()
-    print(user_id)
     account = Account.query.filter_by(user_id=user_id).first()
     transactions = Transaction.query.filter(or_(Transaction.sender_id==user_id, Transaction.receiver_id==user_id)).all()
     data = {
@@ -438,7 +459,7 @@ def forgot_password():
             db.session.commit()
             return render_template("forgot-password-success.html", data={"title": "Forgot Password"})
         except:
-            print(sys.sec_info())
+            print(sys.exc_info())
             flash("An error occured")
             return render_template("forgot-password.html", data={"title": "Forgot Password"})
             abort(500)
@@ -522,7 +543,7 @@ def chat():
                 return render_template("chat-room.html", data=data)
             return render_template("404.html", data={"title": "404"})
         else:
-            abort(500)
+            abort(404)
     except Exception:
         print(sys.exc_info())
         return render_template("404.html", data={"title": "404"})
