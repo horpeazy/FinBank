@@ -27,7 +27,7 @@ load_dotenv(find_dotenv())
 #----------------------------------------------------------------------------#
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "*"}})
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_handlers=True) #, ping_timeout=5, ping_interval=5)
 mail = Mail(app)                # instantiate the mail class
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -522,7 +522,7 @@ def chat():
                 return render_template("chat-room.html", data=data)
             return render_template("404.html", data={"title": "404"})
         else:
-            return "What"
+            abort(500)
     except Exception:
         print(sys.exc_info())
         return render_template("404.html", data={"title": "404"})
@@ -663,4 +663,4 @@ if not app.debug:
 
 # Default port: 
 if __name__ == "__main__":
-    socketio.run(app)
+    socketio.run(app, host="0.0.0.0", port=5000, debug=True)
