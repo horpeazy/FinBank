@@ -543,7 +543,7 @@ def chat():
                 return render_template("chat-room.html", data=data)
             return render_template("404.html", data={"title": "404"})
         else:
-            return "What"
+            abort(404)
     except Exception:
         print(sys.exc_info())
         return render_template("404.html", data={"title": "404"})
