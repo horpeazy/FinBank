@@ -53,6 +53,7 @@ bcrypt = Bcrypt(app)
 db.init_app(app)
 
 
+
 with app.app_context():
     db.create_all()
 Migrate(app, db)
@@ -104,7 +105,6 @@ def load_user(user_id):
 def login():
     if current_user.is_authenticated:
         return redirect("/")
-    form = LoginForm()
     data = {
         "form": form,
         "title": "Login"
@@ -184,7 +184,8 @@ def profile():
     transactions = Transaction.query.filter_by(sender_id=user_id).first()
     data = {
         "title": "Personal Information",
-        "account": account
+        "account": account,
+        "profile_image": account.first_name.lower() + ".png"
     }
     return render_template("profile.html", data=data)
 
@@ -299,6 +300,7 @@ def account():
         "title": "Dashboard",
         "account": account,
         "profile_image": account.first_name.lower() + ".png",
+        "user_id": int(user_id),
         "transactions": transactions[::-1],
         "user_id": int(user_id)
     }
@@ -314,7 +316,8 @@ def transactions():
         "title": "Trasaction History",
         "account": account,
         "transactions": transactions[::-1],
-        "user_id": int(user_id)
+        "user_id": int(user_id),
+        "profile_image": account.first_name.lower() + ".png"
     }
     return render_template("transactions.html", data=data)
 
@@ -389,8 +392,6 @@ def send_money_confirm():
             sender_id = session["sender_id"]
             receiver_id = session["receiver_id"]
             narration = session["narration"]
-            amount = int(session["amount"])
-            fee = int(session["fee"])
             sender_name = session["sender_name"]
             receiver_name = session["receiver_name"]
             sender_token = int(request.form.get("token"))
@@ -685,3 +686,5 @@ if not app.debug:
 # Default port: 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=5000, debug=True)
+from datetime import datetime
+import os

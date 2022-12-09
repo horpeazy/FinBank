@@ -16,3 +16,81 @@
 1980-01-01 00:48:07,219 INFO: errors [in C:\Users\User\Desktop\FinBank\app.py:675]
 1980-01-01 00:49:56,542 INFO: errors [in C:\Users\User\Desktop\FinBank\app.py:676]
 1980-01-01 00:50:18,771 INFO: errors [in C:\Users\User\Desktop\FinBank\app.py:676]
+2022-12-08 19:56:40,590 INFO: errors [in /horpeazy/FinBank/app.py:679]
+2022-12-08 20:06:46,685 INFO: errors [in /horpeazy/FinBank/app.py:679]
+2022-12-08 20:12:22,789 INFO: errors [in /horpeazy/FinBank/app.py:679]
+2022-12-08 20:14:42,287 INFO: errors [in /horpeazy/FinBank/app.py:679]
+2022-12-08 20:29:32,993 INFO: errors [in /horpeazy/FinBank/app.py:683]
+2022-12-08 20:33:00,184 INFO: errors [in /horpeazy/FinBank/app.py:683]
+2022-12-08 20:33:02,987 ERROR: Exception on /dashboard [GET] [in /horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py:1741]
+Traceback (most recent call last):
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/horpeazy/FinBank/app.py", line 309, in account
+    return render_template("dashboard.html", data=data)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/horpeazy/FinBank/templates/dashboard.html", line 65, in template
+    <div class="profile-thumb mt-3 mb-4"> <img  width="85%" height="auto" class="rounded-circle" src="/static/uploads/{{ data.profile_image) }}" alt="">
+jinja2.exceptions.TemplateSyntaxError: unexpected ')'
+2022-12-08 20:34:37,184 INFO: errors [in /horpeazy/FinBank/app.py:683]
+2022-12-09 04:50:26,592 INFO: errors [in /horpeazy/FinBank/app.py:683]
+2022-12-09 04:59:14,794 INFO: errors [in /horpeazy/FinBank/app.py:681]
+2022-12-09 05:16:43,991 INFO: errors [in /horpeazy/FinBank/app.py:681]
+2022-12-09 05:19:17,987 INFO: errors [in /horpeazy/FinBank/app.py:681]
+2022-12-09 05:19:43,157 ERROR: Exception on /profile [GET] [in /horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py:1741]
+Traceback (most recent call last):
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/horpeazy/FinBank/app.py", line 190, in profile
+    return render_template("profile.html", data=data)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/flask/templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/horpeazy/FinBank/venv/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/horpeazy/FinBank/templates/profile.html", line 62, in template
+    <div class="profile-thumb mt-3 mb-4"> <img width="100%" height="auto" class="rounded-circle" src="/static/{{ data.profile_image) }}" alt="">
+jinja2.exceptions.TemplateSyntaxError: unexpected ')'
+2022-12-09 05:26:44,993 INFO: errors [in /horpeazy/FinBank/app.py:680]
